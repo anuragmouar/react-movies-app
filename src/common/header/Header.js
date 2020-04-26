@@ -6,6 +6,8 @@ import logo from '../../assets/logo.svg';
 
 import { Button, Tabs, Tab, Typography, FormControl, InputLabel, Input } from '@material-ui/core';
 
+import propTypes from 'prop-types';
+
 const customStyles = {
     content: {
         top: '50%',
@@ -23,6 +25,10 @@ const TabContainer = function(props) {
             {props.children}
         </Typography>
     ); 
+}
+
+TabContainer.propTypes = {
+    children: propTypes.node.isRequired
 }
 
 class Header extends Component {
