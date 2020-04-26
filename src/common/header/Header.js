@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
 import Modal from 'react-modal';
+
+import Button from '@material-ui/core/Button';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 import './Header.css';
 import logo from '../../assets/logo.svg';
@@ -9,7 +12,10 @@ class Header extends Component {
 
     constructor() {
         super();
-        this.state = {modalIsOpen: false};
+        this.state = {
+            modalIsOpen: false,
+            value: 0
+        };
     }
 
     openModalHandler = () => {
@@ -17,7 +23,14 @@ class Header extends Component {
     }
 
     closeModalHandler = () => {
-        this.setState({modalIsOpen: false});
+        this.setState({
+            modalIsOpen: false,
+            value: 0
+        });
+    }
+
+    tabChangeHandler = (event, value) => {
+        this.setState({value});
     }
 
     render() {
@@ -30,6 +43,10 @@ class Header extends Component {
                 </div>
             </header>
             <Modal contentLabel="Login" isOpen={this.state.modalIsOpen} ariaHideApp={false} onRequestClose={this.closeModalHandler}>
+                <Tabs value={this.state.value} onChange={this.tabChangeHandler}>
+                    <Tab label="Login" />
+                    <Tab label="Register" />
+                </Tabs>
             </Modal>
         </div>);
     }
